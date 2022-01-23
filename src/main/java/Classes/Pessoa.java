@@ -9,6 +9,10 @@ public class Pessoa {
         this.nome = nome;
         this.endereco = endereco;
     }
+// TODO construtor Pessoa Vazio Temporário
+    public Pessoa() {
+
+    }
 
     public String getNome() {
         return nome;

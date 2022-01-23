@@ -1,5 +1,8 @@
-package Conta;
+package View;
 
+
+import Conta.PessoaFisica;
+import Conta.PessoaJuridica;
 
 import java.util.Scanner;
 
@@ -28,8 +31,8 @@ public class Cadastro {
         String endereco = sc.next();
         System.out.println("Digite seu CPF");
         float cpf =sc.nextFloat();
-        PessoaFisica pessoaFisica = new PessoaFisica(nome, endereco, cpf );
-        PessoaFisica.pessoasFisicas.add(pessoaFisica);
+//        PessoaFisica pessoaFisica = new PessoaFisica(nome, endereco, cpf );
+//        PessoaFisica.pessoasFisicas.add(pessoaFisica);
         System.out.println("Cadastro realizado com sucesso!");
     }
 
@@ -40,8 +43,8 @@ public class Cadastro {
         String endereco = sc.next();
         System.out.println("Digite seu CNPJ");
         float cnpj =sc.nextFloat();
-        PessoaJuridica pessoaJuridica = new PessoaJuridica(nome, endereco, cnpj );
-        PessoaJuridica.pessoasJuridicas.add(pessoaJuridica);
+//        PessoaJuridica pessoaJuridica = new PessoaJuridica(nome, endereco, cnpj );
+//        PessoaJuridica.pessoasJuridicas.add(pessoaJuridica);
         System.out.println("Cadastro realizado com sucesso!");
 
     }
@@ -55,12 +58,12 @@ public class Cadastro {
         if(opcao == 1){
             System.out.println("Informe CPF cadastrado para associar a sua conta ");
             float cpf = sc.nextFloat();
-            for (int i=0; i < PessoaFisica.pessoasFisicas.size(); i++ ){
-                if(PessoaFisica.pessoasFisicas.get(i).getCpf() == cpf){
-                    PessoaFisica pessoaFisica = PessoaFisica.pessoasFisicas.get(i);
-                    break;
-                }
-            }
+//            for (int i=0; i < PessoaFisica.pessoasFisicas.size(); i++ ){
+//                if(PessoaFisica.pessoasFisicas.get(i).getCpf() == cpf){
+//                    PessoaFisica pessoaFisica = PessoaFisica.pessoasFisicas.get(i);
+//                    break;
+//                }
+//            }
         }
 
         System.out.println("Digite o número da sua conta");
@@ -81,4 +84,16 @@ public class Cadastro {
         }
     }
 
+    public static void criarConta(){
+        Cadastro.verificarCadastro();
+
+    }
+
+    public static void loginConta(){
+
+    }
+
+    public static void documentoUsuario(){
+
+    }
 }
