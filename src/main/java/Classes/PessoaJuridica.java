@@ -1,10 +1,10 @@
-package Conta;
+package Classes;
 
 
 import java.util.ArrayList;
 
 public class PessoaJuridica extends Pessoa{
-    float cnpj;
+    private float cnpj;
 
     public static ArrayList<PessoaJuridica> pessoasJuridicas = new ArrayList<>();
 
@@ -13,7 +13,14 @@ public class PessoaJuridica extends Pessoa{
         this.cnpj = cnpj;
     }
 
+    public PessoaJuridica() {
+        super();
+    }
+
     public float getCnpj() {
         return cnpj;
     }
+
+
+
 }

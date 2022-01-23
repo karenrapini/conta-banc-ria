@@ -1,12 +1,13 @@
 package View;
 
 
-import Conta.PessoaFisica;
-import Conta.PessoaJuridica;
+import Classes.PessoaFisica;
+import Classes.PessoaJuridica;
+import Controller.CadastroController;
 
 import java.util.Scanner;
 
-public class Cadastro {
+public class CadastroView {
     static Scanner sc = new Scanner(System.in);
 
     public static void cadastrarUsuario(){
@@ -19,51 +20,61 @@ public class Cadastro {
         }else if (opcaoDesejada == 3){
             Mensagem.boasVindas();
         }else{
-            System.out.println(" Opção inválida");
+            Mensagem.opcaoInvalida();
             cadastrarUsuario();
         }
     }
 
     public static void cadastroPessoaFisica(){
-        System.out.println("Digite seu nome");
+        Mensagem.digiteSeuNome();
         String nome = sc.next();
-        System.out.println("Digite seu endereco");
+        Mensagem.digiteSeuEndereco();
         String endereco = sc.next();
-        System.out.println("Digite seu CPF");
+        Mensagem.digiteSeuDocumento("CPF");
         float cpf =sc.nextFloat();
-//        PessoaFisica pessoaFisica = new PessoaFisica(nome, endereco, cpf );
-//        PessoaFisica.pessoasFisicas.add(pessoaFisica);
-        System.out.println("Cadastro realizado com sucesso!");
+        CadastroController.cadastroPessoaFisica(nome, endereco, cpf);
+        Mensagem.cadastroRealizadoComSucesso();
     }
 
     public static void cadastroPessoaJuridica(){
-        System.out.println("Digite seu nome");
+        Mensagem.digiteSeuNome();
         String nome = sc.next();
-        System.out.println("Digite seu endereco");
+        Mensagem.digiteSeuEndereco();
         String endereco = sc.next();
-        System.out.println("Digite seu CNPJ");
+        Mensagem.digiteSeuDocumento("CNPJ");
         float cnpj =sc.nextFloat();
-//        PessoaJuridica pessoaJuridica = new PessoaJuridica(nome, endereco, cnpj );
-//        PessoaJuridica.pessoasJuridicas.add(pessoaJuridica);
-        System.out.println("Cadastro realizado com sucesso!");
+        CadastroController.cadastroPessoaJuridica(nome, endereco, cnpj);
+        Mensagem.cadastroRealizadoComSucesso();
 
     }
 
     public static void cadastroRealizado(){
-        System.out.println("Muito bem! Vamos criar sua conta.\n" +
-                " Qual documento você cadastrou?\n" +
-                " 1 - CPF  - Pessoa Fisica\n" +
-                " 2 - CNPJ - Pessoa Juridica");
+        Mensagem.mensagemCadastroRealizado();
+//        System.out.println("Seu cadastro é de pessoa fisica ou juridica?");
         int opcao = sc.nextInt();
         if(opcao == 1){
-            System.out.println("Informe CPF cadastrado para associar a sua conta ");
+            Mensagem.digiteSeuDocumento("CPF cadastrado para associarmos a sua conta.");
             float cpf = sc.nextFloat();
-//            for (int i=0; i < PessoaFisica.pessoasFisicas.size(); i++ ){
-//                if(PessoaFisica.pessoasFisicas.get(i).getCpf() == cpf){
-//                    PessoaFisica pessoaFisica = PessoaFisica.pessoasFisicas.get(i);
-//                    break;
-//                }
-//            }
+            PessoaFisica pessoaFisica = CadastroController.buscaComparaCpf(cpf);
+            if(pessoaFisica.getCpf() != cpf){
+                Mensagem.documentoNaoEncontrado();
+                CadastroView.cadastrarUsuario();
+            }else{
+                //TODO confirmado que é o mesmo usuario, perguntar os outros dados e salvar em seu cadastro
+            }
+
+        }else if(opcao == 2){
+            Mensagem.digiteSeuDocumento("CNPJ cadastrado para associarmos a sua conta.");
+            float cnpj = sc.nextFloat();
+            PessoaJuridica pessoaJuridica = CadastroController.buscaComparaCnpj(cnpj);
+            if(pessoaJuridica.getCnpj() != cnpj){
+                Mensagem.documentoNaoEncontrado();
+                CadastroView.cadastrarUsuario();
+            }else{
+                //TODO confirmado que é o mesmo usuario, perguntar os outros dados e salvar em seu cadastro
+            }
+        }else{
+            Mensagem.opcaoInvalida();
         }
 
         System.out.println("Digite o número da sua conta");
@@ -75,17 +86,17 @@ public class Cadastro {
         Mensagem.mensagemVerificaCadastro();
         int opcaoCadastro = sc.nextInt() ;
         if(opcaoCadastro == 1){
-            Cadastro.cadastroRealizado();
+            CadastroView.cadastroRealizado();
         }else if(opcaoCadastro == 2){
-            Cadastro.cadastrarUsuario();
+            CadastroView.cadastrarUsuario();
         }else {
             System.out.println("Opção Inválida!");
-            Cadastro.cadastrarUsuario();
+            CadastroView.cadastrarUsuario();
         }
     }
 
     public static void criarConta(){
-        Cadastro.verificarCadastro();
+        CadastroView.verificarCadastro();
 
     }
 
@@ -96,4 +107,6 @@ public class Cadastro {
     public static void documentoUsuario(){
 
     }
+
+
 }

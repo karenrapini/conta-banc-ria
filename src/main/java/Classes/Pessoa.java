@@ -1,4 +1,4 @@
-package Conta;
+package Classes;
 
 
 public class Pessoa {

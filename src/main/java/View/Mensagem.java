@@ -1,6 +1,5 @@
-package Conta;
+package View;
 
-import java.util.Scanner;
 
 public class Mensagem {
     public static void boasVindas(){
@@ -30,5 +29,35 @@ public class Mensagem {
                 " 3 - Voltar a tela de Boas Vindas");
     }
 
+    public static void mensagemCadastroRealizado() {
+        System.out.println("Muito bem! Vamos criar sua conta.\n" +
+                " Qual documento você cadastrou?\n" +
+                " 1 - CPF  - Pessoa Fisica\n" +
+                " 2 - CNPJ - Pessoa Juridica");
+    }
+
+    public static void documentoNaoEncontrado(){
+        System.out.println("Não encontramos o documento digitado em nosso banco de Dados");
+    }
+
+    public static void digiteSeuNome(){
+        System.out.println("Digite seu nome");
+    }
+
+    public static void digiteSeuEndereco(){
+        System.out.println("Digite seu endereco");
+    }
+
+    public static void cadastroRealizadoComSucesso(){
+        System.out.println("Cadastro realizado com sucesso!");
+    }
+    //TODO melhorar essa parte, pois entra qualquer string em documento
+    public static void digiteSeuDocumento(String documento){
+        System.out.println("Digite seu " + documento);
+    }
+
+    public static void opcaoInvalida(){
+        System.out.println(" Opção inválida");
+    }
 
 }
