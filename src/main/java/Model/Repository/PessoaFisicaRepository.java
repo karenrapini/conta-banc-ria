@@ -1,6 +1,6 @@
-package Model;
-import Class.PessoaFisica;
-public class PessoaFisicaModel {
+package Model.Repository;
+import Model.Entity.Pessoa.PessoaFisica;
+public class PessoaFisicaRepository {
 
     public static void cadastroPessoaFisica(PessoaFisica pessoaFisica){
         PessoaFisica.pessoasFisicas.add(pessoaFisica);

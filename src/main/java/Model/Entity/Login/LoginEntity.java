@@ -1,13 +1,13 @@
-package Class;
+package Model.Entity.Login;
 
-public class Login{
+public class LoginEntity {
     private float documento;
     private String senha;
 
-    public Login() {
+    public LoginEntity() {
     }
 
-    public Login(float documento, String senha){
+    public LoginEntity(float documento, String senha){
         this.documento = documento;
         this.senha = senha;
     }

@@ -1,12 +1,12 @@
-package Class;
+package Model.Entity.Pessoa;
 
-import Class.Conta;
+import Model.Entity.Conta.ContaEntity;
 
 public class Pessoa {
     private String nome;
     private String endereco;
     private String senha;
-    private Conta conta;
+    private ContaEntity conta;
 
     public Pessoa(String nome, String endereco, String senha) {
         this.nome = nome;
@@ -34,11 +34,11 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
-    public Conta getConta() {
+    public ContaEntity getConta() {
         return conta;
     }
 
-    public void setConta(Conta conta) {
+    public void setConta(ContaEntity conta) {
         this.conta = conta;
     }
 }

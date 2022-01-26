@@ -1,14 +1,13 @@
-package View;
+package View.Index;
 
 import Application.Aplicacao;
+import View.Cadastro.CadastroView;
+import View.Login.LoginView;
+import View.Mensagem.*;
 
 import java.util.Scanner;
 
-import static View.Mensagem.agradeceFinaliza;
-import static View.Mensagem.opcaoInvalida;
-
-
-public class Index {
+public class IndexView {
 
     static Scanner sc = new Scanner(System.in);
 
@@ -17,16 +16,16 @@ public class Index {
         if(menuInicial == 1){
             CadastroView.cadastrarUsuario();
         }else if(menuInicial == 2){
-            CadastroView.loginConta();
+            LoginView.loginConta();
         }else if(menuInicial == 0){
-            agradeceFinaliza();
+            MensagemView.agradeceFinaliza();
         }else if(menuInicial < 0 | menuInicial >4){
-            opcaoInvalida();
+            MensagemView.opcaoInvalida();
         }
     }
 
     public static void menuConta(){
-        Mensagem.operacaoConta();
+        MensagemContaView.operacaoConta();
         int acaoConta = sc.nextInt();
         switch (acaoConta){
             case 1:sacar();
@@ -35,7 +34,7 @@ public class Index {
             case 4:investir();
             case 5:saldo();
             case 0:voltarInicio();
-            default: Mensagem.opcaoInvalida();
+            default: MensagemView.opcaoInvalida();
             Aplicacao.init();
         }
 

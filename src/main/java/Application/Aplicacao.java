@@ -1,7 +1,7 @@
 package Application;
 
-import View.Index;
-import View.Mensagem;
+import View.Index.IndexView;
+import View.Mensagem.MensagemView;
 
 
 import java.util.Scanner;
@@ -14,8 +14,8 @@ public class Aplicacao {
     }
 
     public static void init(){
-        Mensagem.boasVindas();
-        Index.menuInicial();
+        MensagemView.boasVindas();
+        IndexView.menuInicial();
     }
 
 }

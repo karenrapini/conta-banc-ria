@@ -1,4 +1,4 @@
-package Class;
+package Model.Entity.Pessoa;
 
 
 import java.util.ArrayList;

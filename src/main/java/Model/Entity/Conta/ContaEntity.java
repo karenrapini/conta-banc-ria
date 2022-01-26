@@ -1,19 +1,19 @@
-package Class;
+package Model.Entity.Conta;
 
 import java.math.BigDecimal;
 
-public class Conta{
+public class ContaEntity {
     private int numeroConta;
     private int agenciaConta;
     private BigDecimal saldo = new BigDecimal(200.00);
 
 
-    private Conta(BigDecimal saldo){
+    private ContaEntity(BigDecimal saldo){
         this.saldo = getSaldo();
 
     }
 
-    public Conta(int numeroConta, int agenciaConta){
+    public ContaEntity(int numeroConta, int agenciaConta){
         this.numeroConta = numeroConta;
         this.agenciaConta = agenciaConta;
     }
