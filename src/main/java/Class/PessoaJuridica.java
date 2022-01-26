@@ -1,4 +1,4 @@
-package Classes;
+package Class;
 
 
 import java.util.ArrayList;
@@ -8,8 +8,8 @@ public class PessoaJuridica extends Pessoa{
 
     public static ArrayList<PessoaJuridica> pessoasJuridicas = new ArrayList<>();
 
-    public PessoaJuridica(String nome, String endereco,float cnpj){
-        super(nome, endereco);
+    public PessoaJuridica(String nome, String endereco, String senha, float cnpj){
+        super(nome, endereco, senha);
         this.cnpj = cnpj;
     }
 

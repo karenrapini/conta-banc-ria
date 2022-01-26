@@ -1,4 +1,4 @@
-package Classes;
+package Class;
 
 
 import java.util.ArrayList;
@@ -8,8 +8,8 @@ public class PessoaFisica extends Pessoa{
 
     public static ArrayList<PessoaFisica> pessoasFisicas = new ArrayList<>();
 
-    public PessoaFisica(String nome, String endereco, float cpf) {
-        super(nome, endereco);
+    public PessoaFisica(String nome, String endereco, String senha, float cpf) {
+        super(nome, endereco, senha);
         this.cpf = cpf;
     }
 
@@ -21,4 +21,5 @@ public class PessoaFisica extends Pessoa{
     public float getCpf() {
         return cpf;
     }
+
 }

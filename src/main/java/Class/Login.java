@@ -1,4 +1,4 @@
-package Classes;
+package Class;
 
 public class Login{
     private float documento;

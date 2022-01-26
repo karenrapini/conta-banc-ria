@@ -1,28 +1,23 @@
-package Classes;
+package Class;
 
 import java.math.BigDecimal;
 
 public class Conta{
-    private Pessoa titular;
     private int numeroConta;
     private int agenciaConta;
     private BigDecimal saldo = new BigDecimal(200.00);
-    private String senha;
 
-    private Conta(BigDecimal saldo, String senha){
+
+    private Conta(BigDecimal saldo){
         this.saldo = getSaldo();
-        this.senha = senha;
+
     }
 
-    public Conta(Pessoa titular, int numeroConta, int agenciaConta){
-        this.titular = titular;
+    public Conta(int numeroConta, int agenciaConta){
         this.numeroConta = numeroConta;
         this.agenciaConta = agenciaConta;
     }
 
-    public Pessoa getTitular() {
-        return titular;
-    }
 
     public int getNumeroConta() {
         return numeroConta;
