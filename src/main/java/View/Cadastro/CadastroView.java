@@ -4,6 +4,7 @@ package View.Cadastro;
 import Application.Aplicacao;
 import Model.Entity.Pessoa.Pessoa;
 import Controller.CadastroController;
+import View.Login.LoginView;
 import View.Mensagem.*;
 
 import java.util.Scanner;
@@ -26,33 +27,10 @@ public class CadastroView {
         }
     }
 
-    public static void cadastroRealizado() {
-        MensagemCadastroView.cadastroRealizado();
-        int opcao = sc.nextInt();
-        if (opcao == 1) {
-            CadastroPessoaFisicaView.criarConta();
-        } else if (opcao == 2) {
-            CadastroPessoaJuridicaView.criarConta();
-        } else {
-            MensagemView.opcaoInvalida();
-        }
-    }
-
-    public static void verificarCadastro() {
-        MensagemCadastroView.verificarCadastro();
-        int opcaoCadastro = sc.nextInt();
-        if (opcaoCadastro == 1) {
-            CadastroView.cadastroRealizado();
-        } else if (opcaoCadastro == 2) {
-            CadastroView.cadastrarUsuario();
-        } else {
-            MensagemView.opcaoInvalida();
-            CadastroView.cadastrarUsuario();
-        }
-    }
-
-    public static void criarConta(Pessoa pessoaEscolhida) {
-        CadastroView.verificarCadastro();
+    public static void criarContaCadastro(Pessoa pessoaEscolhida) {
+        ////perguntar qual agencia e associar a conta
+        //perguntar ou gerar numero de conta
+        //após verficar cadastro trazer o cadastro da pessoa
         MensagemCadastroView.cadastroEncontrado(pessoaEscolhida);
         MensagemView.escolhendoAgencia();
         int agenciaConta = sc.nextInt();
@@ -61,6 +39,8 @@ public class CadastroView {
         int numeroConta = 0;
         CadastroController.criarConta(pessoaEscolhida, agenciaConta, numeroConta);
         MensagemContaView.contaCriadaComSucesso();
+        LoginView.loginConta();
+
     }
 
 //    public static void agenciaEscolhida(){

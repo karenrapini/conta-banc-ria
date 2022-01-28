@@ -9,14 +9,16 @@ import Model.Repository.PessoaJuridicaRepository;
 
 public class CadastroController {
 
-    public static void cadastroPessoaFisica(String nome, String endereco, String senha, float cpf){
+    public static PessoaFisica cadastroPessoaFisica(String nome, String endereco, String senha, float cpf){
         PessoaFisica pessoaFisica = new PessoaFisica(nome, endereco , senha , cpf);
         PessoaFisicaRepository.cadastroPessoaFisica(pessoaFisica);
+        return pessoaFisica;
     }
 
-    public static void cadastroPessoaJuridica(String nome, String endereco, String senha, float cnpj){
+    public static PessoaJuridica cadastroPessoaJuridica(String nome, String endereco, String senha, float cnpj){
         PessoaJuridica pessoaJuridica = new PessoaJuridica(nome, endereco, senha, cnpj);
         PessoaJuridicaRepository.cadastroPessoaJuridica(pessoaJuridica);
+        return pessoaJuridica;
     }
 
     public static void criarConta(Pessoa pessoaEscolhida, int agenciaConta, int numeroConta){

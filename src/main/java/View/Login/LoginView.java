@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class LoginView {
 
     static Scanner sc = new Scanner(System.in);
+
     public static void loginConta() {
         MensagemView.logando();
         int opcaoLogin = sc.nextInt();
@@ -14,8 +15,6 @@ public class LoginView {
             LoginPessoaFisicaView.login();
         } else if (opcaoLogin == 2) {
            LoginPessoaJuridicaView.login();
-
-//      TODO Pedir login e senha, comparar em "banco de dados" e mandar para menu de conta PJ ou PF
         }
     }
 

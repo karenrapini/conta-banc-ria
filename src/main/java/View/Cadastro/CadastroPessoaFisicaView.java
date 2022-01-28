@@ -1,9 +1,8 @@
 package View.Cadastro;
 
-import Application.Aplicacao;
 import Controller.CadastroController;
 import Model.Entity.Pessoa.PessoaFisica;
-import View.Login.LoginPessoaJuridicaView;
+import View.Login.LoginPessoaFisicaView;
 import View.Mensagem.*;
 
 import java.util.Scanner;
@@ -22,13 +21,13 @@ public class CadastroPessoaFisicaView {
         String senha = sc.next();
         MensagemDadosView.digiteSeuDocumento("CPF");
         float cpf = sc.nextFloat();
-        CadastroController.cadastroPessoaFisica(nome, endereco, senha, cpf);
+        PessoaFisica pessoaFisica = CadastroController.cadastroPessoaFisica(nome, endereco, senha, cpf);
         MensagemCadastroView.cadastroRealizadoComSucesso();
-        Aplicacao.init();
-        LoginPessoaJuridicaView.login();
+        LoginPessoaFisicaView.menuLogin(pessoaFisica);
     }
 
-    public static void criarConta(){
+
+    public static void criarConta(PessoaFisica pessoaFisica){
         MensagemDadosView.digiteSeuDocumento("CPF");
         MensagemContaView.associandoDocumentoConta();
         float cpf = sc.nextFloat();
@@ -37,7 +36,7 @@ public class CadastroPessoaFisicaView {
             MensagemView.documentoNaoEncontrado();
             CadastroView.cadastrarUsuario();
         } else {
-            CadastroView.criarConta(pessoaFisica);
+            CadastroView.criarContaCadastro(pessoaFisica);
         }
     }
 }

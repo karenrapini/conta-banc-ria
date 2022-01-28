@@ -1,11 +1,14 @@
 package View.Index;
 
 import Application.Aplicacao;
+import Model.Entity.Pessoa.Pessoa;
+import Model.Entity.Pessoa.PessoaJuridica;
+import View.Cadastro.CadastroPessoaJuridicaView;
 import View.Cadastro.CadastroView;
 import View.Login.LoginView;
 import View.Mensagem.*;
-
 import java.util.Scanner;
+
 
 public class IndexView {
 
@@ -19,12 +22,14 @@ public class IndexView {
             LoginView.loginConta();
         }else if(menuInicial == 0){
             MensagemView.agradeceFinaliza();
-        }else if(menuInicial < 0 | menuInicial >4){
+        }else{
             MensagemView.opcaoInvalida();
+            Aplicacao.init();
         }
     }
 
     public static void menuConta(){
+        //Criar conta?
         MensagemContaView.operacaoConta();
         int acaoConta = sc.nextInt();
         switch (acaoConta){
@@ -47,7 +52,7 @@ public class IndexView {
     }
 
     public static void tranferir(){
-         //Conta Poupança | Conta Corrente | Conta Investimento
+        //Conta Poupança | Conta Corrente | Conta Investimento
         //Saldo | Perguntar quantia | Perguntar conta | Pedir senha
         //PJ tem taxa de 0,5% a cada transferencia
     }
