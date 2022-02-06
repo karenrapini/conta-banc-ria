@@ -1,6 +1,6 @@
 package Application;
 
-import View.Index.IndexView;
+import View.IndexView;
 import View.Mensagem.MensagemView;
 
 

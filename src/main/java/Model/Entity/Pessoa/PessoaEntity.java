@@ -2,19 +2,20 @@ package Model.Entity.Pessoa;
 
 import Model.Entity.Conta.ContaEntity;
 
-public class Pessoa {
+public class PessoaEntity {
     private String nome;
     private String endereco;
     private String senha;
     private ContaEntity conta;
+    //Pessoa> conta enum contas> tem 1, 2,3 C.C, C.I., C.J.
 
-    public Pessoa(String nome, String endereco, String senha) {
+    public PessoaEntity(String nome, String endereco, String senha) {
         this.nome = nome;
         this.endereco = endereco;
         this.senha = senha;
     }
 // TODO construtor Pessoa Vazio Temporário
-    public Pessoa() {
+    public PessoaEntity() {
 
     }
 

@@ -8,14 +8,15 @@ public class ContaEntity {
     private BigDecimal saldo = new BigDecimal(200.00);
 
 
-    private ContaEntity(BigDecimal saldo){
-        this.saldo = getSaldo();
-
-    }
-
     public ContaEntity(int numeroConta, int agenciaConta){
         this.numeroConta = numeroConta;
         this.agenciaConta = agenciaConta;
+    }
+
+    protected ContaEntity(int numeroConta, int agenciaConta, BigDecimal saldo){
+        this.numeroConta = numeroConta;
+        this.agenciaConta = agenciaConta;
+        this.saldo = saldo;
     }
 
 
@@ -31,5 +32,17 @@ public class ContaEntity {
         return saldo;
     }
 
+    public void setSaldo(BigDecimal saldo) {
+        this.saldo = saldo;
+    }
+
+    @Override
+    public String toString() {
+        return "ContaEntity{" +
+                "numeroConta=" + numeroConta +
+                ", agenciaConta=" + agenciaConta +
+                ", saldo=" + saldo +
+                '}';
+    }
 }
 

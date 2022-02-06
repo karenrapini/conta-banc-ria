@@ -11,9 +11,4 @@ public class LoginEntity {
         this.documento = documento;
         this.senha = senha;
     }
-
-    public boolean verificaLogin (){
-
-        return true;
-    }
 }

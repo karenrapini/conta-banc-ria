@@ -8,7 +8,7 @@ public class LoginView {
 
     static Scanner sc = new Scanner(System.in);
 
-    public static void loginConta() {
+    public static void login() {
         MensagemView.logando();
         int opcaoLogin = sc.nextInt();
         if (opcaoLogin == 1) {

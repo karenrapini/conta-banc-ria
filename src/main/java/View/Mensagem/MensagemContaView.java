@@ -1,16 +1,13 @@
 package View.Mensagem;
 
+import java.math.BigDecimal;
+
 public class MensagemContaView {
-
-
-    public static void associandoDocumentoConta(){
-        System.out.println(" cadastrado para associarmos a sua conta.");
-    }
 
 
     public static void contaCriadaComSucesso(){
         System.out.println("Conta criada com Sucesso");
-        System.out.println("Seu número de conta é:");
+        System.out.println("Seu número de conta é: ");
     }
 
     public static void operacaoConta(){
@@ -22,11 +19,12 @@ public class MensagemContaView {
                 "5 - Saldo\n" +
                 "0 - Voltar ao Inicio");
     }
+    
+    public static void saldo(BigDecimal saldo){
+        System.out.println("Seu saldo é " + saldo);
+    }
 
-    public static void escolhendoTipoConta(){
-        System.out.println("Qual conta desejar criar?\n" +
-                "1 - Conta Corrente" +
-                "2 - Conta Investimento" +
-                "3 - Conta Poupança ! ATENÇÃO somente pessoas fisicas tem conta Poupança");
+    public static void quantiaSaque(){
+        System.out.println("Qual quantia deseja sacar?");
     }
 }

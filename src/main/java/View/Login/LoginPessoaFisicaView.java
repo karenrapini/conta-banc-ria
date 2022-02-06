@@ -1,10 +1,11 @@
 package View.Login;
 
-import Controller.CadastroController;
-import Model.Entity.Pessoa.PessoaFisica;
-import Model.Entity.Pessoa.PessoaJuridica;
-import View.Cadastro.CadastroPessoaFisicaView;
+import Controller.Pessoa.PessoaFisicaController;
+import Model.Entity.Pessoa.PessoaFisicaEntity;
+import View.Conta.Corrente.ContaCorrentePessoaFisicaView;
 import View.Mensagem.MensagemDadosView;
+import View.Mensagem.MensagemInvalidaView;
+import View.Mensagem.MensagemPessoaFisicaView;
 import View.Mensagem.MensagemView;
 
 import java.util.Scanner;
@@ -15,41 +16,47 @@ public class LoginPessoaFisicaView {
 
     public static void login(){
         MensagemDadosView.digiteSeuDocumento("CPF");
-        float cpfLogin = sc.nextInt();
-        PessoaFisica pessoaFisica = CadastroController.buscaPessoaPorCpf(cpfLogin);
+        float cpfLogin = sc.nextFloat();
+        PessoaFisicaEntity pessoaFisica = PessoaFisicaController.encontraPessoaPorCpf(cpfLogin);
         if(cpfLogin != pessoaFisica.getCpf()){
-            System.out.println("CNPJ Inexistente");
+            System.out.println("CPF Inexistente");
             // criar saida para tela inicial
             //Tentar Novamente ou Voltar ao menu inicial
             login();
         }
         MensagemDadosView.digiteSuaSenha();
         String senhaLogin = sc.next();
-        if(senhaLogin == pessoaFisica.getSenha()) {
+        if(senhaLogin.equals(pessoaFisica.getSenha())) {
             LoginPessoaFisicaView.menuLogin(pessoaFisica);
         }else{
-            MensagemView.senhaInvalida();
+            MensagemInvalidaView.senhaInvalida();
             //Tentar Novamente ou Voltar ao menu inicial
             // criar saida para tela inicial
             login();
         }
     }
 
-    public static void menuLogin(PessoaFisica pessoaFisica){
-        MensagemView.menuLogin();
+    public static void menuLogin(PessoaFisicaEntity pessoaFisica){
+        MensagemPessoaFisicaView.menuLogin();
         int opcaoDesejada = sc.nextInt();
         if(opcaoDesejada == 1){
-            //acessar minhas contas
+            //Opcao acessar conta corrente
+            //se ele tiver conta, acessa a conta
+            pessoaFisica.getConta();
+            //se não tiver conta mande para criar conta
+            ContaCorrentePessoaFisicaView.criar(pessoaFisica);
         }else if(opcaoDesejada == 2){
-            CadastroPessoaFisicaView.criarConta(pessoaFisica);
+            //acessar conta investimento
         }else if(opcaoDesejada == 3){
-            MensagemView.agradeceFinaliza();
+            //acessar conta poupança
+        }else if(opcaoDesejada == 0) {
+            //menu inicial
         }else{
-            MensagemView.opcaoInvalida();
-            menuLogin(pessoaFisica);
+            MensagemInvalidaView.opcaoInvalida();
+            MensagemView.agradeceFinaliza();
         }
 
+//        CadastroPessoaFisicaView.criarConta(pessoaFisica);
 
     }
-
 }

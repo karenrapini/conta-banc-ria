@@ -1,15 +1,13 @@
 package View.Login;
 
-import Application.Aplicacao;
-import Controller.CadastroController;
-
 import java.util.Scanner;
 
-import Model.Entity.Pessoa.Pessoa;
-import Model.Entity.Pessoa.PessoaJuridica;
-import View.Cadastro.CadastroPessoaJuridicaView;
-import View.Index.IndexView;
+import Controller.Pessoa.PessoaJuridicaController;
+import Model.Entity.Pessoa.PessoaJuridicaEntity;
+import View.Conta.Corrente.ContaCorrentePessoaJuridicaView;
 import View.Mensagem.MensagemDadosView;
+import View.Mensagem.MensagemInvalidaView;
+import View.Mensagem.MensagemPessoaJuridicaView;
 import View.Mensagem.MensagemView;
 
 
@@ -20,7 +18,7 @@ public class LoginPessoaJuridicaView {
     public static void login(){
         MensagemDadosView.digiteSeuDocumento("CNPJ");
         float cnpjLogin = sc.nextInt();
-        PessoaJuridica pessoaLogin = CadastroController.buscaPessoaPorCnpj(cnpjLogin);
+        PessoaJuridicaEntity pessoaLogin = PessoaJuridicaController.encontraPessoaPorCnpj(cnpjLogin);
         if(cnpjLogin != pessoaLogin.getCnpj()){
             System.out.println("CNPJ Inexistente");
             // criar saida para tela inicial
@@ -32,27 +30,26 @@ public class LoginPessoaJuridicaView {
         if(senhaLogin == pessoaLogin.getSenha()) {
             LoginPessoaJuridicaView.menuLogin(pessoaLogin);
         }else{
-            MensagemView.senhaInvalida();
+            MensagemInvalidaView.senhaInvalida();
             //Tentar Novamente ou Voltar ao menu inicial
             // criar saida para tela inicial
             login();
         }
     }
 
-    public static void menuLogin(PessoaJuridica pessoaJuridica){
-        MensagemView.menuLogin();
+    public static void menuLogin(PessoaJuridicaEntity pessoaJuridica){
+        MensagemPessoaJuridicaView.menuLogin();
         int opcaoDesejada = sc.nextInt();
         if(opcaoDesejada == 1){
-            //acessar minhas contas
+            //Acessar ou criar conta corrente
+            ContaCorrentePessoaJuridicaView.criar(pessoaJuridica);
         }else if(opcaoDesejada == 2){
-            CadastroPessoaJuridicaView.criarConta(pessoaJuridica);
+            //Acessar ou criar conta investimento
         }else if(opcaoDesejada == 3){
             MensagemView.agradeceFinaliza();
         }else{
-            MensagemView.opcaoInvalida();
+            MensagemInvalidaView.opcaoInvalida();
             menuLogin(pessoaJuridica);
         }
-
-
     }
 }

@@ -14,41 +14,21 @@ public class MensagemView {
                 "\n0 - Sair.");
     }
 
-    public static void documentoNaoEncontrado(){
-        System.out.println("Não encontramos o documento digitado em nosso banco de Dados");
-    }
 
     public static void escolhendoAgencia(){
-        System.out.println("Digite/ Escolha sua agencia:\n" +
-                "1 - Centro" +
-                "2 - Bairro" +
-                "3 - Litoral");
+        System.out.println("\nDigite/ Escolha sua agencia:\n" +
+                "1 - Centro\n" +
+                "2 - Bairro\n" +
+                "3 - Litoral\n");
     }
     public static void logando(){
         System.out.println("Maravilha! Vamos Logar");
         System.out.println("Digite:\n" +
                 "1 - PESSOA FISICA \n" +
-                "2 - PESSOA JURIDICA");
-    }
-
-    public static void senhaInvalida(){
-        System.out.println("Senha Inválida!");
-    }
-
-    public static void opcaoInvalida(){
-        System.out.println("Opção inválida");
+                "2 - PESSOA JURIDICA\n");
     }
 
     public static void agradeceFinaliza(){
         System.out.println("O Banco Let's Code agradece! Sessão Finalizada.");
     }
-
-    public static void menuLogin(){
-        System.out.println("Bem vindo ao Menu Login\n" +
-                "Digite a opção desejada\n" +
-                "1 - Acessar minha(s) conta(s)\n" +
-                "2 - Criar conta\n" +
-                "3 - Finalizar sessão");
-    }
-
 }
