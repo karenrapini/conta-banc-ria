@@ -3,8 +3,8 @@ package View.Conta.Corrente;
 import Application.Aplicacao;
 import Controller.Conta.Corrente.ContaCorrentePessoaFisicaController;
 import Model.Entity.Pessoa.PessoaFisicaEntity;
+import View.ContaView;
 import View.Mensagem.*;
-import java.math.BigDecimal;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,50 +22,32 @@ public class ContaCorrentePessoaFisicaView {
         ContaCorrentePessoaFisicaController.criarConta(pessoaFisica, agenciaConta, numeroConta);
         pessoaFisicaEntity = pessoaFisica;
         MensagemContaView.contaCriadaComSucesso();
-        menu();
+        menu(pessoaFisica);
     }
 
-    public static void menu(){
-        MensagemContaView.operacaoConta();
+    public static void menu(PessoaFisicaEntity pessoaFisica){
+        MensagemPessoaFisicaView.operacaoConta();
         int acaoConta = sc.nextInt();
         switch (acaoConta){
-            case 1:sacar();
-            case 2:tranferir();
+            case 1:
+                sacar(pessoaFisica);
+            case 2:
+                transferir(pessoaFisica);
             case 3:depositar();
-            case 4:investir();
-            case 5:saldo();
-            case 0:voltarInicio();
+            case 4:saldo();
+            case 5:voltarInicio();
+            case 0:sair();
             default: MensagemInvalidaView.opcaoInvalida();
-                Aplicacao.init();
+                menu(pessoaFisica);
         }
     }
 
-    public static void sacar() {
-        MensagemContaView.saldo(pessoaFisicaEntity.getConta().getSaldo());
-        MensagemContaView.quantiaSaque();
-        //mandar uma parte para o controller
-        BigDecimal quantia = sc.nextBigDecimal();
-        if(quantia.compareTo(pessoaFisicaEntity.getConta().getSaldo()) <= 0){
-            boolean verificandoSenha = true;
-            do {
-                MensagemDadosView.digiteSuaSenha();
-                String senhaLogin = sc.next();
-                if(senhaLogin.equals(pessoaFisicaEntity.getSenha())){
-                    verificandoSenha = false;
-                    BigDecimal sacando = pessoaFisicaEntity.getConta().getSaldo().subtract(quantia);
-                    pessoaFisicaEntity.getConta().setSaldo(sacando);
-                    System.out.println(pessoaFisicaEntity.getConta().getSaldo());
-                    menu();
-                }else{
-                    MensagemInvalidaView.senhaInvalida();
-                }
-            }while (verificandoSenha);
-        }else{
-            MensagemInvalidaView.saldoInsuficiente();
-        }
+    public static void sacar(PessoaFisicaEntity pessoaFisica){
+        ContaView.sacar(pessoaFisica);
     }
 
-    public static void tranferir(){
+    public static void transferir(PessoaFisicaEntity pessoaFisica){
+        ContaView.transferir(pessoaFisica);
         //Conta Poupança | Conta Corrente | Conta Investimento
         //Saldo | Perguntar quantia | Perguntar conta | Pedir senha
         //PJ tem taxa de 0,5% a cada transferencia
@@ -76,17 +58,15 @@ public class ContaCorrentePessoaFisicaView {
         //Perguntar quantia | Nome da pessoa | Você inseriu o envelope?
     }
 
-    public static void investir(){
-        //Conta Investimento
-        //Saldo | Valor que deseja investir
-        // PJ tem 2 % a mais que PF
-    }
-
     public static void saldo(){
         MensagemContaView.saldo(pessoaFisicaEntity.getConta().getSaldo());
     }
     public static void voltarInicio(){
         Aplicacao.init();
+    }
+
+    public static void sair(){
+        MensagemView.agradeceFinaliza();
     }
 
 }

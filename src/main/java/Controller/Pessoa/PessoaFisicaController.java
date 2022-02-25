@@ -12,10 +12,6 @@ public class PessoaFisicaController {
     }
 
     public static PessoaFisicaEntity encontraPessoaPorCpf(float cpf){
-        // TODO tem que receber o CPF e comparar a lista de pessoas cadastradas
         return PessoaFisicaRepository.buscaPessoaPorCpf(cpf);
     }
-
-
-
 }

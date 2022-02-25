@@ -3,6 +3,8 @@ package Controller.Conta.Corrente;
 import Model.Entity.Conta.ContaCorrenteEntity;
 import Model.Entity.Pessoa.PessoaFisicaEntity;
 
+import java.math.BigDecimal;
+
 public class ContaCorrentePessoaFisicaController {
 
     public static ContaCorrenteEntity criarConta(PessoaFisicaEntity pessoaFisica, int agenciaConta, int numeroConta){
@@ -12,5 +14,4 @@ public class ContaCorrentePessoaFisicaController {
         System.out.println("Essa é a conta " + conta.toString());
         return conta;
     }
-
 }

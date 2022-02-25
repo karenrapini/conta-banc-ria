@@ -11,8 +11,7 @@ public class MensagemDadosView {
     }
 
     public static void digiteSuaSenha(){
-        System.out.println("Digite sua senha.\n" +
-                "Use apenas letras");;
+        System.out.println("Digite sua senha.");
     }
 
     //TODO melhorar essa parte, pois entra qualquer string em documento

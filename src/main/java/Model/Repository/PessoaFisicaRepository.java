@@ -12,7 +12,6 @@ public class PessoaFisicaRepository {
                 return PessoaFisicaEntity.pessoasFisicas.get(i);
             }
         }
-
         return new PessoaFisicaEntity();  //TODO colocar Exception ;
 
     }
